@@ -1,0 +1,60 @@
+name: c2cp
+services:
+  api:
+    build: ./Chivalry-2-Competitive-Platform-Backend
+    ports: 
+     - "8081:8081"
+    environment:
+      DATABASE_URL: mysql://root:my_cool_root_password@mysql:3306/c2cp
+    networks:
+      - network1
+
+  matchmaker:
+    build: ./Chivalry-2-Competitive-Platform-Matchmaking
+    ports: 
+     - "3001:3001"
+    environment:
+      DATABASE_URL: mysql://root:my_cool_root_password@mysql:3306/c2cp
+    networks:
+      - network1
+
+  webapp:
+    build: ./Chivalry-2-Competitive-Platform
+    ports: 
+     - "8080:8080"
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my_cool_root_password
+      MYSQL_DATABASE: c2cp
+      MYSQL_USER: gustav
+      MYSQL_PASSWORD: awesomeSauce420
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - network1
+
+  migration:
+    build:
+      context: ./Chivalry2-Competitive-Platform-Diesel-Config
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: mysql://root:my_cool_root_password@mysql:3306/c2cp
+      DB_HOST: mysql
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: my_cool_root_password
+      MYSQL_DATABASE: c2cp
+      MYSQL_USER: gustav
+      MYSQL_PASSWORD: awesomeSauce420
+    networks:
+      - network1
+
+volumes:
+  mysql_data:
+
+networks:
+  network1:
+    driver: bridge

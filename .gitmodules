@@ -1,0 +1,12 @@
+[submodule "Chivalry-2-Competitive-Platform-Backend"]
+	path = Chivalry-2-Competitive-Platform-Backend
+	url = https://github.com/TotallyNotRust/Chivalry-2-Competitive-Platform-Backend
+[submodule "Chivalry-2-Competitive-Platform-Matchmaking"]
+	path = Chivalry-2-Competitive-Platform-Matchmaking
+	url = https://github.com/TotallyNotRust/Chivalry-2-Competitive-Platform-Matchmaking
+[submodule "Chivalry2-Competitive-Platform-Diesel-Config"]
+	path = Chivalry2-Competitive-Platform-Diesel-Config
+	url = https://github.com/TotallyNotRust/Chivalry2-Competitive-Platform-Diesel-Config
+[submodule "Chivalry-2-Competitive-Platform"]
+	path = Chivalry-2-Competitive-Platform
+	url = https://github.com/TotallyNotRust/Chivalry-2-Competitive-Platform
